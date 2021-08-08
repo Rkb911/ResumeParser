@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        processdata();
+        processData();
 
     }
 
 
 
-    public void processdata() {
+    public void processData() {
 
 
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
