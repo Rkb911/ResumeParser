@@ -1,17 +1,17 @@
 package com.example.resumeparser;
 
-public class Model {
+public class Models {
 
     String name, email, phone, skills, designation, degree, college, experience;
 
-    public Model() {
+    public Models() {
 
     }
 
 
 
 
-    public Model(String name, String email, String phone, String skills, String designation, String degree, String college, String experience) {
+    public Models(String name, String email, String phone, String skills, String designation, String degree, String college, String experience) {
 
         this.name = name;
         this.email = email;
