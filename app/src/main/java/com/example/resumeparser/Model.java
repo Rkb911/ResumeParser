@@ -8,6 +8,9 @@ public class Model {
 
     }
 
+
+
+
     public Model(String name, String email, String phone, String skills, String designation, String degree, String college, String experience) {
 
         this.name = name;
