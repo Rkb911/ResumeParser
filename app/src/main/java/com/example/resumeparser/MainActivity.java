@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                     JSONObject jsonObject = response.getJSONObject(0);
 
-                    Log.i("operation", jsonObject.toString());
+                    Toast.makeText(MainActivity.this, jsonObject.toString(), Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
