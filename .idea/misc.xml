@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/Projects/ResumeParser/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
+        <entry key="..\:/Android Studio/Projects/ResumeParser/app/src/main/res/layout/single_row.xml" value="0.2629757785467128" />
         <entry key="..\:/AndroidProjects/ResumeParser/app/src/main/res/layout/activity_main.xml" value="0.20885416666666667" />
       </map>
     </option>

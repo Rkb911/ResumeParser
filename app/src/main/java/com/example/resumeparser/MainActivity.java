@@ -5,23 +5,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String url = "https://resume-parserapp.herokuapp.com/api/resume-list/";
+    private static final String urlFetch = "https://resume-parserapp.herokuapp.com/api/resume-list/";
 
     RecyclerView recyclerView;
 
@@ -50,22 +46,61 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
 
+        StringRequest request=new StringRequest(urlFetch, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                GsonBuilder builder=new GsonBuilder();
+                Gson gson=builder.create();
+                Models data[]=gson.fromJson(response, Models[].class);
+
+                MyAdapter adapter=new MyAdapter(data);
+                recyclerView.setAdapter(adapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        queue.add(request);
+
+
+
+       /* JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
-                Log.i("abc", "hii");
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                Models data[];
+
 
                 try {
 
-                    JSONObject jsonObject = response.getJSONObject(0);
+                    for (int i = 0 ; i < response.length() ; i++) {
 
-                    Toast.makeText(MainActivity.this, jsonObject.toString(), Toast.LENGTH_LONG).show();
+                        JSONObject jsonObject = response.getJSONObject(i);
+
+                        // Toast.makeText(MainActivity.this, jsonObject.toString(), Toast.LENGTH_LONG).show();
+
+                        data = gson.fromJson(String.valueOf(jsonObject), Models[].class);
+
+                        MyAdapter myAdapter = new MyAdapter(data);
+
+                    }
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+
+
 
             }
         }, new Response.ErrorListener() {
@@ -76,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        queue.add(jsonArrayRequest);
+        queue.add(jsonArrayRequest);  */
 
     }
 }
