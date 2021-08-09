@@ -66,12 +66,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 StringRequest putRequest = new StringRequest(Request.Method.PUT, PUT_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        notifyDataSetChanged();
                         Toast.makeText(v.getContext(), "Hello God", Toast.LENGTH_SHORT).show();
+
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        notifyDataSetChanged();
                         Toast.makeText(v.getContext(), "Hello Bot", Toast.LENGTH_SHORT).show();
 
                     }
