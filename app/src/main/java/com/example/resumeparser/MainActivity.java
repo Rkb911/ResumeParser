@@ -99,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-
-
-
             }
         }, new Response.ErrorListener() {
             @Override
