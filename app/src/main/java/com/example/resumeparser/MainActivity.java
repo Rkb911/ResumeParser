@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
-
         processData();
 
     }
@@ -52,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
                 GsonBuilder builder=new GsonBuilder();
                 Gson gson=builder.create();
-                Models data[]=gson.fromJson(response, Models[].class);
+                Models data[] = gson.fromJson(response, Models[].class);
 
-                MyAdapter adapter=new MyAdapter(data);
+                MyAdapter adapter = new MyAdapter(data);
                 recyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
