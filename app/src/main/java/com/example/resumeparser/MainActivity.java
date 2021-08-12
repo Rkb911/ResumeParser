@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
 import android.app.Activity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     FloatingActionButton fabUpload;
+    SwipeRefreshLayout swipeRefresh;
 
     //This is for asking Storage Permission
     private static final int MY_RESULT_CODE_FILECHOOSER = 2000;
@@ -44,8 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         fabUpload = findViewById(R.id.uploadButton);
+        swipeRefresh = findViewById(R.id.swipeRefresh);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                ProcessData();
+
+            }
+        });
 
         fabUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         );
 
         queue.add(request);
+
+
+        swipeRefresh.setRefreshing(false);
 
 
     }
