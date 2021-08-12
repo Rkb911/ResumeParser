@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp">
+
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    android:visibility="visible"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
 
+        >
 
 
         <LinearLayout
@@ -23,28 +27,30 @@
             >
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/fileName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:minLines="2"
                 android:text="File Name"
-                android:id="@+id/fileName"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/isParsed"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="12sp"
                 android:text="Parsed"
-                android:id="@+id/isParsed"/>
+                android:textSize="12sp" />
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonParse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonParse"
-            android:text="Parse"
-            />
+            android:layout_gravity="center_vertical|end"
+            android:text="Parse" />
 
     </LinearLayout>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.cardview.widget.CardView>
