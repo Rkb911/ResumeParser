@@ -1,5 +1,7 @@
 package com.example.resumeparser;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.Map;
-
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
@@ -37,9 +37,47 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row, parent, false);
+        
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(view.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                deleteFileDialog(v);
+                return false;
+            }
+        });
         return  new MyViewHolder(view);
+
         
     }
+
+
+    private void deleteFileDialog(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
+        //alertDialog.setTitle("Delete File");
+        alertDialog.setMessage("Do you want to Delete this file?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(view.getContext(), "this file will be deleted", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
