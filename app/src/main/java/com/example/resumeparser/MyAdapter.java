@@ -17,8 +17,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
@@ -28,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Integer id;
 
     private static final String urlParse = "https://resume-parserapp.herokuapp.com/api/resume-parse/" ;
+
 
     public MyAdapter(Models[] data) {
         this.data = data;
@@ -99,30 +104,41 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             public void onClick(View v) {
                 id = data[holder.getAdapterPosition()].getId();
 
+                RequestQueue queue = Volley.newRequestQueue(v.getContext());
+
                 String PUT_URL = urlParse + id + "/";
 
-                StringRequest putRequest = new StringRequest(Request.Method.PUT, PUT_URL, new Response.Listener<String>() {
+                //This solves the Parsed thing
+                JSONObject obj = new JSONObject();
+
+                try {
+                    obj.put("is_parsed",true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, PUT_URL,obj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(JSONObject response) {
 
                         notifyDataSetChanged();
                         Toast.makeText(v.getContext(), "Hello God", Toast.LENGTH_SHORT).show();
-
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         notifyDataSetChanged();
-                        Toast.makeText(v.getContext(), "Hello Bot", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), error.toString(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
 
 
 
-                RequestQueue queue = Volley.newRequestQueue(v.getContext());
+
                 queue.add(putRequest);
+
 
                 Log.i("proper?", id.toString());
 
