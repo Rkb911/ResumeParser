@@ -87,7 +87,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.fileName.setText(data[position].getResume());
+        holder.fileName.setText(data[position].getResume().substring(13));
 
         if (data[position].getIs_parsed() == "true"){
             holder.isParsed.setText("Parsed");
