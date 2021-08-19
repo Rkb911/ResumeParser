@@ -18,7 +18,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -84,6 +83,56 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
 
+    //Confirmation For Parsing Already Parsed File
+    private void confirmParseFile(View view, RequestQueue queue, String PUT_URL) {
+        AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
+        alertDialog.setMessage("This File is already Parsed.\n\nDo you want to Parse it again ? ");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                parseFile(view,queue,PUT_URL);
+                dialog.dismiss();
+            }
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void parseFile (View v, RequestQueue queue, String PUT_URL) {
+
+        JSONObject obj = new JSONObject();
+
+        try {
+            obj.put("is_parsed", true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, PUT_URL, obj, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                notifyDataSetChanged();
+                Toast.makeText(v.getContext(), "Hello God", Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                notifyDataSetChanged();
+                Toast.makeText(v.getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        queue.add(putRequest);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
@@ -109,40 +158,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 String PUT_URL = urlParse + id + "/";
 
                 //This solves the Parsed thing
-                JSONObject obj = new JSONObject();
+                if(data[holder.getAdapterPosition()].getIs_parsed() == String.valueOf(false))
+                {
+                    parseFile(v,
+                            queue,
+                            PUT_URL);
 
-                try {
-                    obj.put("is_parsed",true);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                }
+                else
+                {
+
+                    confirmParseFile(v,queue,PUT_URL);
+
                 }
 
-                JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, PUT_URL,obj, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        notifyDataSetChanged();
-                        Toast.makeText(v.getContext(), "Hello God", Toast.LENGTH_SHORT).show();
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        notifyDataSetChanged();
-                        Toast.makeText(v.getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
 
 
 
 
-                queue.add(putRequest);
 
 
                 Log.i("proper?", id.toString());
 
             }
+
+
         });
 
 
