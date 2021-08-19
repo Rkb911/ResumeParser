@@ -18,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Integer id;
 
     private static final String urlParse = "https://resume-parserapp.herokuapp.com/api/resume-parse/" ;
+    private static final String urlDelete = "https://resume-parserapp.herokuapp.com/api/resume-delete/" ;
 
 
     public MyAdapter(Models[] data) {
@@ -42,34 +44,44 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row, parent, false);
         
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(view.getContext(), "Pressed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        view.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                deleteFileDialog(v);
-                return false;
-            }
-        });
         return  new MyViewHolder(view);
 
         
     }
 
+    private void deleteFile(int id,View view){
 
-    private void deleteFileDialog(View view) {
+        String DELETE_URL = urlDelete + id + "/";
+
+        RequestQueue queue = Volley.newRequestQueue(view.getContext());
+
+        StringRequest deleteRequest = new StringRequest(Request.Method.DELETE, DELETE_URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        queue.add(deleteRequest);
+    }
+
+    private void deleteFileDialog(View view, int fileId ) {
         AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
         //alertDialog.setTitle("Delete File");
         alertDialog.setMessage("Do you want to Delete this file?");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(view.getContext(), "this file will be deleted", Toast.LENGTH_SHORT).show();
+                deleteFile(fileId,view);
                 dialog.dismiss();
             }
         });
@@ -81,6 +93,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         });
         alertDialog.show();
     }
+
+
 
 
     //Confirmation For Parsing Already Parsed File
@@ -206,6 +220,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             fileName = itemView.findViewById(R.id.fileName);
             isParsed = itemView.findViewById(R.id.isParsed);
             buttonParse = itemView.findViewById(R.id.buttonParse);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer fileID = data[getAdapterPosition()].getId();
+                    Toast.makeText(itemView.getContext(), String.valueOf(fileID), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Integer fileID = data[getAdapterPosition()].getId();
+                    deleteFileDialog(v,fileID);
+                    return false;
+                }
+            });
 
 
 
