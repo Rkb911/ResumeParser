@@ -2,6 +2,7 @@ package com.example.resumeparser;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -187,11 +188,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 }
 
 
-
-
-
-
-
                 Log.i("proper?", id.toString());
 
             }
@@ -208,7 +204,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return data.length;
     }
 
+    static Models data1[];
+    static int fileNumber;
+
+    public static Models[] sendData(){
+        return data1;
+    }
+
+    private void getData(){
+        data1 = data;
+    }
+
+    private void setFileId(int fileId){
+        fileNumber = fileId;
+    }
+
+    public static int sendFileId(){
+        return fileNumber;
+    }
+
+
     class MyViewHolder extends RecyclerView.ViewHolder{
+
+
 
         TextView fileName;
         TextView isParsed;
@@ -225,7 +243,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 @Override
                 public void onClick(View v) {
                     Integer fileID = data[getAdapterPosition()].getId();
-                    Toast.makeText(itemView.getContext(), String.valueOf(fileID), Toast.LENGTH_SHORT).show();
+                    setFileId(fileID);
+                    Intent intent = new Intent(v.getContext(), ResumeDetailActivity.class);
+                    intent.putExtra("fileID", String.valueOf(fileID));
+                    v.getContext().startActivity(intent);
+
+
+                    //Toast.makeText(itemView.getContext(), String.valueOf(fileID), Toast.LENGTH_SHORT).show();
                 }
             });
 
