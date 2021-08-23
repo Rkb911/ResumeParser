@@ -187,15 +187,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
                 }
 
-
                 Log.i("proper?", id.toString());
 
             }
 
-
         });
-
-
 
     }
 
