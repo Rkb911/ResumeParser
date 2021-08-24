@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -14,6 +15,7 @@ import android.view.animation.Transformation;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResumeDetailActivity extends AppCompatActivity {
 
@@ -22,8 +24,8 @@ public class ResumeDetailActivity extends AppCompatActivity {
 
     Models data[];
 
-    Bundle bundle = getIntent().getExtras();
-    int fileId = bundle.getInt("fileID");
+
+    int fileId ;
 
 
 
@@ -32,7 +34,13 @@ public class ResumeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_detail);
 
-        data = MyAdapter.sendData();
+        Intent intent = getIntent();
+        fileId = intent.getIntExtra("fileID",0);
+
+
+        Toast.makeText(ResumeDetailActivity.this, String.valueOf(fileId), Toast.LENGTH_SHORT).show();
+
+        /*data = MyAdapter.sendData();
         pName = findViewById(R.id.nameParsed);
         pPhone = findViewById(R.id.phoneParsed);
         pEmail = findViewById(R.id.emailParsed);
@@ -49,7 +57,7 @@ public class ResumeDetailActivity extends AppCompatActivity {
         pDesignation.setText(data[fileId].getDesignation());
         pDegree.setText(data[fileId].getDegree());
         pCollege.setText(data[fileId].getCollege());
-        pExperience.setText(data[fileId].getExperience());
+        pExperience.setText(data[fileId].getExperience());*/
 
 
 

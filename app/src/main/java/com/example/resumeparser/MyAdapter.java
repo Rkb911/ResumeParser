@@ -200,24 +200,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return data.length;
     }
 
-    static Models data1[];
-    static int fileNumber;
-
-    public static Models[] sendData(){
-        return data1;
-    }
-
-    private void getData(){
-        data1 = data;
-    }
-
-    private void setFileId(int fileId){
-        fileNumber = fileId;
-    }
-
-    public static int sendFileId(){
-        return fileNumber;
-    }
 
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -239,9 +221,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 @Override
                 public void onClick(View v) {
                     Integer fileID = data[getAdapterPosition()].getId();
-                    setFileId(fileID);
                     Intent intent = new Intent(v.getContext(), ResumeDetailActivity.class);
-                    intent.putExtra("fileID", String.valueOf(fileID));
+                    intent.putExtra("fileID", fileID);
                     v.getContext().startActivity(intent);
 
 
