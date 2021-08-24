@@ -17,16 +17,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class ResumeDetailActivity extends AppCompatActivity {
 
     TextView pName, pPhone, pEmail, pSkills, pDesignation, pDegree, pCollege, pExperience;
 
-
-    Models data[];
-
-
     int fileId ;
-
+    private static final String urlDetail = "https://resume-parserapp.herokuapp.com/api/resume-detail/";
 
 
     @Override
@@ -34,13 +38,6 @@ public class ResumeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_detail);
 
-        Intent intent = getIntent();
-        fileId = intent.getIntExtra("fileID",0);
-
-
-        Toast.makeText(ResumeDetailActivity.this, String.valueOf(fileId), Toast.LENGTH_SHORT).show();
-
-        /*data = MyAdapter.sendData();
         pName = findViewById(R.id.nameParsed);
         pPhone = findViewById(R.id.phoneParsed);
         pEmail = findViewById(R.id.emailParsed);
@@ -50,16 +47,61 @@ public class ResumeDetailActivity extends AppCompatActivity {
         pCollege = findViewById(R.id.collegeParsed);
         pExperience = findViewById(R.id.experienceParsed);
 
-        pName.setText(data[fileId].getName());
-        pPhone.setText(data[fileId].getPhone());
-        pEmail.setText(data[fileId].getEmail());
-        pSkills.setText(data[fileId].getSkills());
-        pDesignation.setText(data[fileId].getDesignation());
-        pDegree.setText(data[fileId].getDegree());
-        pCollege.setText(data[fileId].getCollege());
-        pExperience.setText(data[fileId].getExperience());*/
+        Intent intent = getIntent();
+        fileId = intent.getIntExtra("fileID",0);
 
 
+        Toast.makeText(ResumeDetailActivity.this, String.valueOf(fileId), Toast.LENGTH_SHORT).show();
+
+        ProcessData();
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+    public void ProcessData() {
+
+        String DETAIL_URL = urlDetail + fileId + "/";
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest request=new StringRequest(DETAIL_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                GsonBuilder builder=new GsonBuilder();
+                Gson gson=builder.create();
+                Models data = gson.fromJson(response, Models.class);
+
+                pName.setText(data.getName());
+                pPhone.setText(data.getPhone());
+                pEmail.setText(data.getEmail());
+                pSkills.setText(data.getSkills());
+                pDesignation.setText(data.getDesignation());
+                pDegree.setText(data.getDegree());
+                pCollege.setText(data.getCollege());
+                pExperience.setText(data.getExperience());
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        queue.add(request);
 
     }
 }
