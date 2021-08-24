@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResumeDetailActivity"
-    >
+    tools:context=".ResumeDetailActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedContent"
@@ -43,28 +42,27 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/phone"
-                >
+                app:layout_constraintBottom_toTopOf="@+id/phone">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name:"
+                        android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Name:"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/nameParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/nameParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -79,30 +77,26 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/name"
-                app:layout_constraintBottom_toTopOf="@+id/email"
-                >
+                app:layout_constraintBottom_toTopOf="@+id/email">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Phone Number:"
-                android:textStyle="bold"
+                    <TextView
+                        android:id="@+id/phoneParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                 />
-
-            <TextView
-                android:id="@+id/phoneParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -119,29 +113,25 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/phone"
-                app:layout_constraintBottom_toTopOf="@+id/skills"
-                >
+                app:layout_constraintBottom_toTopOf="@+id/skills">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textStyle="bold"
+                    <TextView
+                        android:id="@+id/emailParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                 />
-
-            <TextView
-                android:id="@+id/emailParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -158,28 +148,25 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/designation"
-                app:layout_constraintTop_toBottomOf="@+id/email"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/email">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Skills:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Skills:"
-                android:textStyle="bold"
-                 />
+                    <TextView
+                        android:id="@+id/skillsParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/skillsParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -196,28 +183,25 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/degree"
-                app:layout_constraintTop_toBottomOf="@+id/skills"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/skills">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Designation:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Designation:"
-                android:textStyle="bold"
-                 />
+                    <TextView
+                        android:id="@+id/designationParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/designationParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -234,28 +218,25 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/college"
-                app:layout_constraintTop_toBottomOf="@+id/designation"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/designation">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Degree:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Degree:"
-                android:textStyle="bold"
-                 />
+                    <TextView
+                        android:id="@+id/degreeParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/degreeParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -272,28 +253,25 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/experience"
-                app:layout_constraintTop_toBottomOf="@+id/degree"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/degree">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="College:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="College:"
-                android:textStyle="bold"
-                 />
+                    <TextView
+                        android:id="@+id/collegeParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/collegeParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -310,36 +288,30 @@
                 app:cardElevation="2dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/college"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/college">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Experience:"
+                        android:textStyle="bold" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Experience:"
-                android:textStyle="bold"
-                 />
+                    <TextView
+                        android:id="@+id/experienceParsed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/experienceParsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 
