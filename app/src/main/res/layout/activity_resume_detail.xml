@@ -32,10 +32,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/name"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -67,10 +65,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/phone"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -103,10 +99,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/email"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -138,10 +132,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/skills"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -173,10 +165,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/designation"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -208,10 +198,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/degree"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -243,10 +231,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/college"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
@@ -278,10 +264,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/experience"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_marginVertical="5dp"
                 app:cardCornerRadius="5dp"
