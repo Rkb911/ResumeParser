@@ -28,136 +28,315 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/name"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/phone"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
 
             <TextView
-                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name:"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/nameParsed"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/nameParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/phone"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/phone"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintBottom_toTopOf="@+id/email"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
+
 
             <TextView
-                android:id="@+id/phone"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Phone Number:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/phoneParsed"
-                app:layout_constraintTop_toBottomOf="@+id/nameParsed" />
+
+                 />
 
             <TextView
                 android:id="@+id/phoneParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/email"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/email"
-                app:layout_constraintTop_toBottomOf="@+id/phone" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/phone"
+                app:layout_constraintBottom_toTopOf="@+id/skills"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/email"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/emailParsed"
-                app:layout_constraintTop_toBottomOf="@+id/phoneParsed" />
+
+                 />
 
             <TextView
                 android:id="@+id/emailParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/skills"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/skills"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/designation"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/skills"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Skills:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/skillsParsed"
-                app:layout_constraintTop_toBottomOf="@+id/emailParsed" />
+                 />
 
             <TextView
                 android:id="@+id/skillsParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/designation"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/designation"
-                app:layout_constraintTop_toBottomOf="@+id/skills" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/degree"
+                app:layout_constraintTop_toBottomOf="@+id/skills"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/designation"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Designation:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/designationParsed"
-                app:layout_constraintTop_toBottomOf="@+id/skillsParsed" />
+                 />
 
             <TextView
                 android:id="@+id/designationParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/degree"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/degree"
-                app:layout_constraintTop_toBottomOf="@+id/designation" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/college"
+                app:layout_constraintTop_toBottomOf="@+id/designation"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/degree"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Degree:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/degreeParsed"
-                app:layout_constraintTop_toBottomOf="@+id/designationParsed" />
+                 />
 
             <TextView
                 android:id="@+id/degreeParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/college"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/college"
-                app:layout_constraintTop_toBottomOf="@+id/degree" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/experience"
+                app:layout_constraintTop_toBottomOf="@+id/degree"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/college"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="College:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/collegeParsed"
-                app:layout_constraintTop_toBottomOf="@+id/degreeParsed" />
+                 />
 
             <TextView
                 android:id="@+id/collegeParsed"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/experience"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/experience"
-                app:layout_constraintTop_toBottomOf="@+id/college" />
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/college"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    >
 
             <TextView
-                android:id="@+id/experience"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Experience:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/experienceParsed"
-                app:layout_constraintTop_toBottomOf="@+id/collegeParsed" />
+                 />
 
             <TextView
                 android:id="@+id/experienceParsed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/experience" />
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
