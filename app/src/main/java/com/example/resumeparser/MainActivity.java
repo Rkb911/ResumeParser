@@ -5,11 +5,14 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String urlFetch = "https://resume-parserapp.herokuapp.com/api/resume-list/";
     private static final String urlUpload = "https://resume-parserapp.herokuapp.com/api/resume-create/";
+    private static final int MY_REQUEST_CODE_PERMISSION = 101;
 
     RecyclerView recyclerView;
     FloatingActionButton fabUpload;
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                UploadFileIntent();
+                askPermissionAndUploadFile();
 
             }
         });
@@ -96,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Storage Permission checker to be implemented later
 
-    /*private void askPermissionAndUploadFile()  {
+    private void askPermissionAndUploadFile()  {
         // With Android Level >= 23, you have to ask the user
         // for permission to access External Storage.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) { // Level 23
@@ -114,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
-        this.UploadFile();
-    }*/
+        this.UploadFileIntent();
+    }
 
 
     //This will Provide Info of the selected File
