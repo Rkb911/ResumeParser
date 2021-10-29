@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_LONG).show();
 
                     if (result.getResultCode() == RESULT_OK) {
                         // Get the Uri of the selected file
@@ -305,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Server timed out, Please refresh",Toast.LENGTH_LONG).show();
             }
         }
         );

@@ -42,7 +42,7 @@ public class ResumeDetailActivity extends AppCompatActivity {
         fileId = intent.getIntExtra("fileID",0);
 
 
-        Toast.makeText(ResumeDetailActivity.this, String.valueOf(fileId), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ResumeDetailActivity.this, String.valueOf(fileId), Toast.LENGTH_SHORT).show();
 
         ProcessData();
 
